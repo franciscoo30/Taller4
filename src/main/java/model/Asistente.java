@@ -1,23 +1,33 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Asistente {
-    private String informacion;
-    private List<Entrada> entradasCompradas;
+    private String nombre;
+    private String rut;
+    private String numeroTelefonico;
+    private String preferenciasMusicales;
 
-    public Asistente(String informacion) {
-        this.informacion = informacion;
-        this.entradasCompradas = new ArrayList<>();
+    public Asistente(String nombre, String rut, String numeroTelefonico, String preferenciasMusicales) {
+        this.nombre = nombre;
+        this.rut = rut;
+        this.numeroTelefonico = numeroTelefonico;
+        this.preferenciasMusicales = preferenciasMusicales;
     }
 
-    public void comprarEntrada(Entrada entrada) {
-        entradasCompradas.add(entrada);
+    public String getNombre() {
+        return nombre;
     }
 
-    public void cancelarAsistencia() {
-        // Implementar lógica de cancelación de asistencia
+    public String getRut() {
+        return rut;
+    }
+
+    public String getNumeroTelefonico() {
+        return numeroTelefonico;
+    }
+
+    public String getPreferenciasMusicales() {
+        return preferenciasMusicales;
     }
 }
+
 

@@ -1,7 +1,7 @@
 package gui;
 
-import model.EventoMusical;
 import data.GestorEvento;
+import model.EventoMusical;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -24,7 +24,8 @@ public class VentanaRegistroEvento extends JFrame {
         // Configuración de la ventana
         setTitle("Registro de Evento");
         setSize(400, 200);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // Cambiar el comportamiento de cierre al ocultar en lugar de cerrar
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
         // Creación de componentes
         nombreTextField = new JTextField();
@@ -63,20 +64,23 @@ public class VentanaRegistroEvento extends JFrame {
             EventoMusical nuevoEvento = new EventoMusical(nombre, fecha, lugar);
             gestorEvento.agregarEvento(nuevoEvento);
 
-            // Crear archivo de texto al registrar el evento
-            gestorEvento.crearArchivoDeEvento(nuevoEvento);
-
             JOptionPane.showMessageDialog(this, "Evento registrado exitosamente.");
+
+            // Limpiar campos después de registrar
+            nombreTextField.setText("");
+            fechaTextField.setText("");
+            lugarTextField.setText("");
+
+            // Crear el archivo de eventos
+            gestorEvento.crearArchivoDeEventos();
+
+            // Opcional: Ocultar la ventana en lugar de cerrarla
+            setVisible(false);
         } catch (ParseException | IllegalArgumentException ex) {
             JOptionPane.showMessageDialog(this, "Error al registrar el evento: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
-    public static void main(String[] args) {
-        // Ejemplo de uso
-        GestorEvento gestorEvento = new GestorEvento();
-        VentanaRegistroEvento ventana = new VentanaRegistroEvento(gestorEvento);
-        ventana.setVisible(true);
-    }
 }
+
+
 

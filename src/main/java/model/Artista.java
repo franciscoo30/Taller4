@@ -1,4 +1,5 @@
 package model;
+
 public class Artista {
     private String nombreArtistico;
     private String generoMusical;
@@ -12,9 +13,9 @@ public class Artista {
         return nombreArtistico;
     }
 
-    public void mostrarInformacion() {
-        System.out.println("Artista: " + nombreArtistico);
-        System.out.println("Género Musical: " + generoMusical);
+    public String getGeneroMusical() {
+        return generoMusical;
     }
 }
+
 
